@@ -36,4 +36,12 @@ class FriendController extends AppController
 
         return $this->render('users', compact('users', 'pages'));
     }
+
+    public function actionFriends($id)
+    {
+        $friends = User::findBySql("SELECT * FROM user LEFT JOIN friend ON user.id = friend.friend_id WHERE user_id = {$id} AND accepted = 1")->all();
+        $friendRequests = User::findBySql("SELECT * FROM user LEFT JOIN friend ON user.id = friend.user_id WHERE friend_id = {$id} AND accepted = 0")->all();
+
+        return $this->render('friends', compact('friends', 'friendRequests'));
+    }
 }

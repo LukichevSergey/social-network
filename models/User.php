@@ -16,6 +16,11 @@ class User extends ActiveRecord implements \yii\web\IdentityInterface
         return $this->password === sha1($password);
     }
 
+    public function getFriends()
+    {
+        return $this->hasMany(Friend::class, ['user_id' => 'id']);
+    }
+
     /**
      * {@inheritdoc}
      */

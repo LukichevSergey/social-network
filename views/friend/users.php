@@ -1,4 +1,5 @@
 <div class="wrapper">
+    <?= $this->render('//layouts/inc/sidebar') ?>
     <div class="users">
         <h2>Все пользователи</h2>
         <table class="iksweb">
