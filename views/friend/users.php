@@ -7,6 +7,7 @@
                 <th>Пользователь</th>
                 <th>Возраст</th>
                 <th>Страна проживания</th>
+                <th>Добавить в друзья</th>
             </tr>
             <?php foreach ($users as $user): ?>
             <tr>
@@ -14,6 +15,20 @@
                     <li class="user__item"><a href="<?= \yii\helpers\Url::toRoute(['home/user', 'id' => $user->id]) ?>" class="user__link"><?= $user->name . " " . $user->surname ?></a></li></td>
                 <td><?= calculate_age($user->dateofbirth) ?></td>
                 <td><?= $user->country ?></td>
+                <td><?php $flag = ''; foreach ($friendRequests as $request): ?>
+                        <?php if($request->id == $user->id){$flag = 'request';}?>
+                    <?php endforeach; ?>
+                    <?php foreach ($friends as $friend): ?>
+                        <?php if($friend->id == $user->id){$flag = 'friend';}?>
+                    <?php endforeach; ?>
+                    <?php if($flag == 'request'): ?>
+                        Заявка отправлена
+                    <?php elseif ($flag == 'friend'): ?>
+                        Ваш друг
+                    <?php else: ?>
+                        <a href="<?= \yii\helpers\Url::toRoute(['friend/add', 'id' => $user->id]) ?>" style="font-size: 24px">+</a>
+                    <?php endif; ?>
+                </td>
             </tr>
             <?php endforeach; ?>
         </table>
