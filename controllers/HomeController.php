@@ -4,6 +4,7 @@
 namespace app\controllers;
 use app\models\Login;
 use app\models\Signup;
+use app\models\User;
 use Yii;
 
 
@@ -11,7 +12,20 @@ class HomeController extends AppController
 {
     public function actionIndex()
     {
+        if(Yii::$app->user->isGuest)
+        {
+            $this->redirect(['home/login']);
+        }
+
         return $this->render('index');
+    }
+
+    public function actionUser($id)
+    {
+        $user = User::findOne($id);
+
+        return $this->render('user', compact('user'));
+
     }
 
     public function actionSignup()
@@ -21,7 +35,6 @@ class HomeController extends AppController
         if(isset($_POST['Signup']))
         {
             $model->attributes = Yii::$app->request->post('Signup');
-            // $model->email = $_POST['Signup']['email']
 
             if($model->validate() && $model->signUp())
             {
