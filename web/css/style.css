@@ -35,3 +35,39 @@ table.iksweb th{font-weight:normal;font-size:14px; color:#ffffff;background-colo
 table.iksweb td{font-size:13px;color:#354251;}
 table.iksweb td,table.iksweb th{padding:10px 5px;line-height:13px;vertical-align: middle;border: 1px solid #354251;}	table.iksweb tr:hover{background-color:#f9fafb}
 table.iksweb tr:hover td{color:#354251;cursor:default;}
+
+.dialogs {
+    flex: 1;
+}
+
+.dialog {
+    margin-left: 100px;
+    flex: 5;
+}
+
+.dialogs__list {
+    padding-left: 0;
+}
+
+.dialog__list {
+    padding-left: 0;
+}
+
+.dialog__item {
+    margin-bottom: 20px;
+}
+
+.userMessage {
+    text-align: right;
+    background-color: #6fff93;
+    padding: 10px;
+    border-radius: 25px;
+    box-shadow: -4px 4px 8px 0px rgba(34, 60, 80, 0.2);
+}
+
+.opponentMessage {
+    background-color: #a5eeff;
+    padding: 10px;
+    border-radius: 25px;
+    box-shadow: 4px 4px 8px 0px rgba(34, 60, 80, 0.2);
+}

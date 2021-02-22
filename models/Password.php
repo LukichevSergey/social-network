@@ -26,10 +26,4 @@ class Password extends Model
             'doubleNewPassword' => 'Повторите ваш новый пароль',
         ];
     }
-
-    public function changePassword()
-    {
-
-
-    }
 }
