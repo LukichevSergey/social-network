@@ -6,6 +6,7 @@ namespace app\controllers;
 use app\models\Dialog;
 use app\models\Message;
 use app\models\User;
+use yii\web\NotFoundHttpException;
 
 class DialogController extends AppController
 {
@@ -17,6 +18,7 @@ class DialogController extends AppController
         $friend = User::find()->where(['id' => $friendId])->limit(1)->one();
         $users = User::find()->where(['!=', 'id', $user->id])->all();
         $dialogForm = new Message();
+
 
         if($friendId)
         {
