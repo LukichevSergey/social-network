@@ -27,13 +27,13 @@
         <h2>Диалог с <?= $friend->name . " " . $friend->surname ?></h2>
         <ul class="dialog__list">
             <?php foreach ($userMessages as $userMessage): ?>
-                <li class="dialog__item"><div class="userMessage">
+                <li class="dialog__item user_li"><div class="userMessage">
                         <div class="dialog__item_time"></div><?= $userMessage->datetime ?>
                         <div class="dialog__item_text"></div><?= $userMessage->text ?>
                     </div></li>
             <?php endforeach; ?>
             <?php foreach ($opponentMessages as $opponentMessage): ?>
-                <li class="dialog__item"><div class="opponentMessage">
+                <li class="dialog__item opponent_li"><div class="opponentMessage">
                         <div class="dialog__item_time"></div><?= $opponentMessage->datetime ?>
                         <div class="dialog__item_text"></div><?= $opponentMessage->text ?>
                     </div></li>

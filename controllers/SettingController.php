@@ -4,7 +4,10 @@
 namespace app\controllers;
 
 
+use app\models\ImageUpload;
 use app\models\Password;
+use app\models\User;
+use yii\web\UploadedFile;
 
 class SettingController extends AppController
 {
@@ -36,5 +39,24 @@ class SettingController extends AppController
         }
 
         return $this->render('settings', compact('passwordForm', 'user'));
+    }
+
+    public function actionAvatar($id)
+    {
+        $model = new ImageUpload;
+
+        if(\Yii::$app->request->isPost)
+        {
+            $user = User::findOne($id);
+            $file = UploadedFile::getInstance($model, 'image');
+
+            if($user->saveImage($model->uploadFile($file, $user->avatar)))
+            {
+                return $this->redirect(['home/user']);
+            }
+
+        }
+
+        return $this->render('avatar', compact('model'));
     }
 }

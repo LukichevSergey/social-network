@@ -10,19 +10,21 @@ use Yii;
 
 class HomeController extends AppController
 {
-    public function actionIndex()
+
+    public function actionUser($id = null)
     {
         if(Yii::$app->user->isGuest)
         {
             $this->redirect(['home/login']);
         }
 
-        return $this->render('index');
-    }
-
-    public function actionUser($id)
-    {
-        $user = User::findOne($id);
+        if($id)
+        {
+            $user = User::findOne($id);
+        } else
+        {
+            $user = $user = User::findOne(Yii::$app->user->identity->id);
+        }
 
         return $this->render('user', compact('user'));
 

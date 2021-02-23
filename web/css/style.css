@@ -51,10 +51,13 @@ table.iksweb tr:hover td{color:#354251;cursor:default;}
 
 .dialog__list {
     padding-left: 0;
+    display: flex;
+    flex-direction: column;
 }
 
 .dialog__item {
     margin-bottom: 20px;
+    max-width: 500px;
 }
 
 .userMessage {
@@ -65,9 +68,17 @@ table.iksweb tr:hover td{color:#354251;cursor:default;}
     box-shadow: -4px 4px 8px 0px rgba(34, 60, 80, 0.2);
 }
 
+.user_li {
+    align-self: flex-end;
+}
+
 .opponentMessage {
     background-color: #a5eeff;
     padding: 10px;
     border-radius: 25px;
     box-shadow: 4px 4px 8px 0px rgba(34, 60, 80, 0.2);
+}
+
+.opponent_li {
+    align-self: flex-start;
 }
